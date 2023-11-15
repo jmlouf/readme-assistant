@@ -85,6 +85,70 @@ If you need help choosing a license, refer to GitHub's [https://choosealicense.c
 // Create a function to write README file.
 function writeToFile() {
 
+    // Template literal stored in "markdown" variable.
+    const markdown = `# ${answers.projectTitle}
+
+## Description
+    
+${answers.projectDescription}
+    
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [Tests](#tests)
+- [Questions](#questions)
+- [License](#license)
+
+## Installation
+
+${answers.projectInstallation}
+
+## Usage
+
+${answers.projectUsage}
+
+## Credits
+
+${answers.projectCredits}
+
+## Tests
+
+${answers.projectTests}
+
+## Questions
+
+For any questions, feel free to [email me](mailto:${answers.projectEmail}) or visit [my GitHub profile](https://github.com/${answers.projectGitHub}/).
+
+## License
+
+${answers.projectLicense}
+
+---
+
+## Badges
+
+![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
+
+Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
+
+## Features
+
+If your project has a lot of features, list them here.
+
+## How to Contribute
+
+If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
+
+## Tests
+
+Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+    `;
+
+    fs.writeFile('README.md', markdown, (err) =>
+        err ? console.log(err) : console.log('Success')
+    );
 };
 
 // TODO: Create a function to initialize app
