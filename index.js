@@ -82,6 +82,13 @@ const questions = [
         message: `Provide a title for your project.
     
     Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid project title.';
+            } else {
+                return true;
+            }
+        }
     },
     {
         name: 'projectDescription',
@@ -94,6 +101,13 @@ const questions = [
   - What did you learn?
 
     Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid project description.';
+            } else {
+                return true;
+            }
+        }
     },
     {
         name: 'projectInstallation',
@@ -103,6 +117,13 @@ const questions = [
 (Provide a step-by-step description of how to get the development environment running.)
     
     Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid installation guide.';
+            } else {
+                return true;
+            }
+        }
     },
     {
         name: 'projectUsage',
@@ -115,6 +136,13 @@ Then, using the relative filepath, add it to your README using the following syn
   ![alt text](assets/images/screenshot.png)
 
     Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid set of usage instructions.';
+            } else {
+                return true;
+            }
+        }
     },
     {
         name: 'projectCredits',
@@ -138,6 +166,13 @@ Then, using the relative filepath, add it to your README using the following syn
         message: `To add a link to your GitHub profile, enter your GitHub username.
     
     Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid GitHub username.';
+            } else {
+                return true;
+            }
+        }
     },
     {
         name: 'projectEmail',
@@ -145,6 +180,13 @@ Then, using the relative filepath, add it to your README using the following syn
         message: `To allow for questions regarding this project, enter your email.
     
     Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid email.';
+            } else {
+                return true;
+            }
+        }
     },
     {
         name: 'projectLicense',
@@ -199,6 +241,7 @@ If you need help choosing a license, refer to GitHub's https://choosealicense.co
             'Unlicensed',
             'WTFPL',
         ],
+        default: 'MIT',
     },
 ];
 
@@ -206,12 +249,14 @@ If you need help choosing a license, refer to GitHub's https://choosealicense.co
 // Create a function to write README file.
 function writeToFile(data) {
 
-    const licenseType = getLicenseType(data.projectLicense);
+    const selectedLicense = data.projectLicense; 
+
+    const licenseType = getLicenseType(selectedLicense);
     const color = licenseType.color;
 
     // Template literal stored in "markdown" variable.
     const markdown = `# ${data.projectTitle}
-${renderLicenseBadge(licenseType, color)}
+${renderLicenseBadge(selectedLicense, color)}
 
 ## Description
     
@@ -257,24 +302,24 @@ This project is available under the ${data.projectLicense} license. Please revie
 };
 
 
-function getLicenseType(license) {
+function getLicenseType(selectedLicense) {
     const allTypes = Object.values(licenseTypes);
 
     for (let i = 0; i < allTypes.length; i++) {
-        const type = allTypes[i];
+        let type = allTypes[i];
 
-        if (type.licenseIds.includes(license)) {
+        if (type.licenseIds.includes(selectedLicense)) {
             return type;
         }
     }
 };
 
 
-function renderLicenseBadge(licenseType, color) {
+function renderLicenseBadge(selectedLicense, color) {
 
     const format = {
         label: 'License',
-        message: licenseType.licenseIds[0],
+        message: selectedLicense,
         color: color,
     }
 
