@@ -1,0 +1,16 @@
+{
+  "name": "readme-assistant",
+  "version": "1.0.0",
+  "description": "## Description",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "badge-maker": "^3.3.1",
+    "inquirer": "^8.2.4"
+  }
+}
