@@ -1,9 +1,9 @@
-# q
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="140" height="20" role="img" aria-label="License: AGPL-1.0-only"><title>License: AGPL-1.0-only</title><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="140" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="51" height="20" fill="#555"/><rect x="51" width="89" height="20" fill="#fe7d37"/><rect width="140" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="265" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="410">License</text><text x="265" y="140" transform="scale(.1)" fill="#fff" textLength="410">License</text><text aria-hidden="true" x="945" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="790">AGPL-1.0-only</text><text x="945" y="140" transform="scale(.1)" fill="#fff" textLength="790">AGPL-1.0-only</text></g></svg>
+# a
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="160" height="20" role="img" aria-label="License: AGPL-3.0-or-later"><title>License: AGPL-3.0-or-later</title><linearGradient id="s" x2="0" y2="100%"><stop offset="0" stop-color="#bbb" stop-opacity=".1"/><stop offset="1" stop-opacity=".1"/></linearGradient><clipPath id="r"><rect width="160" height="20" rx="3" fill="#fff"/></clipPath><g clip-path="url(#r)"><rect width="51" height="20" fill="#555"/><rect x="51" width="109" height="20" fill="#fe7d37"/><rect width="160" height="20" fill="url(#s)"/></g><g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110"><text aria-hidden="true" x="265" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="410">License</text><text x="265" y="140" transform="scale(.1)" fill="#fff" textLength="410">License</text><text aria-hidden="true" x="1045" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="990">AGPL-3.0-or-later</text><text x="1045" y="140" transform="scale(.1)" fill="#fff" textLength="990">AGPL-3.0-or-later</text></g></svg>
 
 ## Description
     
-q
+a
     
 ## Table of Contents
 
@@ -16,25 +16,25 @@ q
 
 ## Installation
 
-q
+a
 
 ## Usage
 
-q
+a
 
 ## Credits
 
-q
+a
 
 ## Tests
 
-q
+A
 
 ## Questions
 
-For any questions, feel free to [email me](mailto:q) or visit [my GitHub profile](https://github.com/q/).
+For any questions, feel free to [email me](mailto:a) or visit [my GitHub profile](https://github.com/a/).
 
 ## License
 
-OFL-1.1
+This project is available under the AGPL-3.0-or-later license. Please review the LICENSE file for more information on rights and limitations.
     
