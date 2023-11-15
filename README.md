@@ -59,3 +59,6 @@ The following resources were utilized:
 ## License
 
 Please refer to the LICENSE in the repository.
+
+
+![badmath](https://img.shields.io/github/languages/top/lernantino/badmath)
