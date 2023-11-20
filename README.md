@@ -1,9 +1,9 @@
-# o
-![License Badge](https://img.shields.io/badge/License-AGPL_1.0_or_later-orange.svg)
+# r
+[![License Badge](https://img.shields.io/badge/license-BSD%203%20Clause%20Clear-green)](./LICENSE)
 
 ## Description
     
-o
+r
     
 ## Table of Contents
 
@@ -16,25 +16,29 @@ o
 
 ## Installation
 
-o
+r
 
 ## Usage
 
-o
+r
+
+The following images demonstrate the application's appearance and functionality:
+
+![Screenshot](./assets/images/r)
 
 ## Credits
 
-o
+r
 
 ## Tests
 
-o
+r
 
 ## Questions
 
-For any questions, feel free to [email me](mailto:o) or visit [my GitHub profile](https://github.com/o/).
+For any questions, feel free to email me ([r](mailto:r)) or visit my GitHub profile ([r](https://github.com/r/)).
 
 ## License
 
-This project is available under the AGPL_1.0_or_later license. Please review the LICENSE file for more information on rights and limitations.
+This project is available under the following license: BSD 3 Clause Clear. For more information on rights and limitations, please review the [LICENSE](./LICENSE) file.
     

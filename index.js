@@ -1,10 +1,9 @@
-// Packages needed for this application.
 // Filesystem.
 const fs = require('fs');
+// Path module (built-in Node.js module).
+const path = require('path');
 // Inquirer.
 const inquirer = require('inquirer');
-// Badge maker.
-const { makeBadge, ValidationError } = require('badge-maker');
 
 
 // Object with different license types.
@@ -12,60 +11,59 @@ const licenseTypes = {
     // Permissive licenses.
     permissive: {
         licenseIds: [
-            'AFL_3.0',
-            'Apache_2.0',
-            'Artistic_2.0',
-            'BSD_2_Clause',
-            'BSD_3_Clause',
-            'BSD_3_Clause_Clear',
-            'BSL_1.0',
-            'CC_BY_4.0',
-            'ECL_2.0',
+            'AFL 3.0',
+            'Apache 2.0',
+            'Artistic 2.0',
+            'BSD 2 Clause',
+            'BSD 3 Clause',
+            'BSD 3 Clause Clear',
+            'BSL 1.0',
+            'CC BY 4.0',
+            'ECL 2.0',
             'ISC',
             'MIT',
-            'MS_PL',
+            'MS PL',
             'NCSA',
             'PostgreSQL',
             'Zlib',
         ],
         color: 'green',
     },
-    // Copyleft licenses require 'Disclose source' (https://choosealicense.com/appendix/#disclose-source)
-    // or 'Same license' (https://choosealicense.com/appendix/#same-license).
+    // Copyleft licenses (require 'Disclose source' or 'Same license').
     copyleft: {
         licenseIds: [
-            'AGPL_1.0_only',
-            'AGPL_1.0_or_later',
-            'AGPL_3.0_only',
-            'AGPL_3.0_or_later',
-            'CC_BY_SA_4.0',
-            'EPL_1.0',
-            'EPL_2.0',
-            'EUPL_1.1',
-            'GPL_1.0_only',
-            'GPL_1.0_or_later',
-            'GPL_2.0_only',
-            'GPL_2.0_or_later',
-            'GPL_3.0_only',
-            'GPL_3.0_or_later',
-            'LGPL_2.0_only',
-            'LGPL_2.0_or_later',
-            'LGPL_2.1_only',
-            'LGPL_2.1_or_later',
-            'LGPL_3.0_only',
-            'LGPL_3.0_or_later',
-            'LPPL_1.3c',
-            'MPL_2.0',
-            'MS_RL',
-            'OFL_1.1',
-            'OSL_3.0',
+            'AGPL 1.0 only',
+            'AGPL 1.0 or later',
+            'AGPL 3.0 only',
+            'AGPL 3.0 or later',
+            'CC BY SA 4.0',
+            'EPL 1.0',
+            'EPL 2.0',
+            'EUPL 1.1',
+            'GPL 1.0 only',
+            'GPL 1.0 or later',
+            'GPL 2.0 only',
+            'GPL 2.0 or later',
+            'GPL 3.0 only',
+            'GPL 3.0 or later',
+            'LGPL 2.0 only',
+            'LGPL 2.0 or later',
+            'LGPL 2.1 only',
+            'LGPL 2.1 or later',
+            'LGPL 3.0 only',
+            'LGPL 3.0 or later',
+            'LPPL 1.3c',
+            'MPL 2.0',
+            'MS RL',
+            'OFL 1.1',
+            'OSL 3.0',
         ],
         color: 'orange',
     },
-    // Public domain licenses do not require 'License and copyright notice' (https://choosealicense.com/appendix/#include-copyright).
+    // Public domain licenses (do not require 'License and copyright notice').
     publicDomain: {
         licenseIds: [
-            'CC0_1.0',
+            'CC0 1.0',
             'Unlicensed',
             'WTFPL',
         ],
@@ -128,17 +126,58 @@ const questions = [
     {
         name: 'projectUsage',
         type: 'input',
-        message: `Provide instructions and examples for use. Include screenshots as needed.
-To add a screenshot, create an "assets/images" folder in your repository and upload your screenshot to it.
-Then, using the relative filepath, add it to your README using the following syntax:
-
-  // markdown syntax for including a screenshot:
-  ![alt text](assets/images/screenshot.png)
+        message: `Provide instructions and examples for use.
 
     Answer: `,
         validate: function (input) {
             if (!input) {
                 return 'Error: Please enter a valid set of usage instructions.';
+            } else {
+                return true;
+            }
+        }
+    },
+    {
+        name: 'projectImage1',
+        type: 'input',
+        message: `To add a screenshot, enter the name of your first image file, including the extension (e.g., screenshot-1.png).
+
+A directory called assets/images will be created.)
+
+    Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid image file name.';
+            } else {
+                return true;
+            }
+        }
+    },
+    {
+        name: 'projectImage2',
+        type: 'input',
+        message: `Enter the name of your second image file, including the extension (e.g., screenshot-2.png).
+
+    Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid image file name.';
+            } else {
+                return true;
+            }
+        }
+    },
+    {
+        name: 'projectImage3',
+        type: 'input',
+        message: `Enter the name of your third image file, including the extension (e.g., screenshot-3.png).
+
+(Don't forget to store screenshot files.)
+
+    Answer: `,
+        validate: function (input) {
+            if (!input) {
+                return 'Error: Please enter a valid image file name.';
             } else {
                 return true;
             }
@@ -191,55 +230,55 @@ Then, using the relative filepath, add it to your README using the following syn
     {
         name: 'projectLicense',
         type: 'list',
-        message: `Using the license keyword list below, select at least one license for your project to let other developers know what they can and cannot do with your project.
-This will render a badge for the selected license(s) near the top of the README and add a notice in the "License" section explaining which license the application is covered under.
-If you need help choosing a license, refer to GitHub's https://choosealicense.com/.
+        message: `Using the license keyword list below, select at least one license for your project.
+
+(For help choosing a license, refer to https://choosealicense.com by GitHub.)
 
     Answer: `,
         choices: [
-            'AFL_3.0',
-            'Apache_2.0',
-            'Artistic_2.0',
-            'BSD_2_Clause',
-            'BSD_3_Clause',
-            'BSD_3_Clause_Clear',
-            'BSL_1.0',
-            'CC_BY_4.0',
-            'ECL_2.0',
+            'AFL 3.0',
+            'AGPL 1.0 only',
+            'AGPL 1.0 or later',
+            'AGPL 3.0 only',
+            'AGPL 3.0 or later',
+            'Apache 2.0',
+            'Artistic 2.0',
+            'BSD 2 Clause',
+            'BSD 3 Clause',
+            'BSD 3 Clause Clear',
+            'BSL 1.0',
+            'CC BY 4.0',
+            'CC BY SA 4.0',
+            'CC0 1.0',
+            'ECL 2.0',
+            'EPL 1.0',
+            'EPL 2.0',
+            'EUPL 1.1',
+            'GPL 1.0 only',
+            'GPL 1.0 or later',
+            'GPL 2.0 only',
+            'GPL 2.0 or later',
+            'GPL 3.0 only',
+            'GPL 3.0 or later',
             'ISC',
+            'LGPL 2.0 only',
+            'LGPL 2.0 or later',
+            'LGPL 2.1 only',
+            'LGPL 2.1 or later',
+            'LGPL 3.0 only',
+            'LGPL 3.0 or later',
+            'LPPL 1.3c',
             'MIT',
-            'MS_PL',
+            'MPL 2.0',
+            'MS PL',
+            'MS RL',
             'NCSA',
+            'OFL 1.1',
+            'OSL 3.0',
             'PostgreSQL',
-            'Zlib',
-            'AGPL_1.0_only',
-            'AGPL_1.0_or_later',
-            'AGPL_3.0_only',
-            'AGPL_3.0_or_later',
-            'CC_BY_SA_4.0',
-            'EPL_1.0',
-            'EPL_2.0',
-            'EUPL_1.1',
-            'GPL_1.0_only',
-            'GPL_1.0_or_later',
-            'GPL_2.0_only',
-            'GPL_2.0_or_later',
-            'GPL_3.0_only',
-            'GPL_3.0_or_later',
-            'LGPL_2.0_only',
-            'LGPL_2.0_or_later',
-            'LGPL_2.1_only',
-            'LGPL_2.1_or_later',
-            'LGPL_3.0_only',
-            'LGPL_3.0_or_later',
-            'LPPL_1.3c',
-            'MPL_2.0',
-            'MS_RL',
-            'OFL_1.1',
-            'OSL_3.0',
-            'CC0_1.0',
             'Unlicensed',
             'WTFPL',
+            'Zlib',
         ],
         default: 'MIT',
     },
@@ -249,7 +288,7 @@ If you need help choosing a license, refer to GitHub's https://choosealicense.co
 // Create a function to write README file.
 function writeToFile(data) {
 
-    const selectedLicense = data.projectLicense; 
+    const selectedLicense = data.projectLicense;
 
     const licenseType = getLicenseType(selectedLicense);
     const color = licenseType.color;
@@ -279,6 +318,12 @@ ${data.projectInstallation}
 
 ${data.projectUsage}
 
+The following images demonstrate the application's appearance and functionality:
+
+![Screenshot](./assets/images/${data.projectImage1})
+![Screenshot](./assets/images/${data.projectImage2})
+![Screenshot](./assets/images/${data.projectImage3})
+
 ## Credits
 
 ${data.projectCredits}
@@ -289,19 +334,29 @@ ${data.projectTests}
 
 ## Questions
 
-For any questions, feel free to [email me](mailto:${data.projectEmail}) or visit [my GitHub profile](https://github.com/${data.projectGitHub}/).
+For any questions, feel free to email me ([${data.projectEmail}](mailto:${data.projectEmail})) or visit my GitHub profile ([${data.projectGitHub}](https://github.com/${data.projectGitHub}/)).
 
 ## License
 
-This project is available under the ${data.projectLicense} license. Please review the LICENSE file for more information on rights and limitations.
+This project is available under the following license: ${data.projectLicense}. For more information on rights and limitations, please review the [LICENSE](./LICENSE) file.
     `;
 
     fs.writeFile('README.md', markdown, (err) =>
-        err ? console.log(err) : console.log('Success.')
+        err ? console.log(err) : console.log('README.md created.')
+    );
+
+    // Join the 'assets' and 'images' paths into a variable.
+    const imagePath = path.join('assets', 'images');
+
+    // Create the directory with the new imagePath variable.
+    // { recursive: true } ensures that any missing parents folders are created.
+    fs.mkdir(imagePath, { recursive: true }, (err) =>
+        err ? console.log(err) : console.log('assets/images path created.')
     );
 };
 
 
+// Function to match user choice with licenses in object.
 function getLicenseType(selectedLicense) {
     const allTypes = Object.values(licenseTypes);
 
@@ -315,14 +370,16 @@ function getLicenseType(selectedLicense) {
 };
 
 
+// Function to create URL and obtain badge via Shields.io.
 function renderLicenseBadge(selectedLicense, color) {
-    const licenseURL = `https://img.shields.io/badge/License-${encodeURIComponent(selectedLicense)}-${color}.svg`;
 
-    return `![License Badge](${licenseURL})`;
+    const licenseURL = `https://img.shields.io/badge/license-${encodeURIComponent(selectedLicense)}-${color}`;
+
+    return `[![License Badge](${licenseURL})](./LICENSE)`;
 };
 
 
-// TODO: Create a function to initialize app
+// Creates function to initialize application.
 function init() {
     inquirer
         .prompt(questions)
@@ -330,5 +387,5 @@ function init() {
 };
 
 
-// Function call to initialize app
+// Function called to initialize application.
 init();
