@@ -30,11 +30,7 @@ When finished, a README.md file will be created in the output folder along with 
 
 Review the generated README file in output folder, make any desired changes directly in the file, add additional assets like images/video demos in assets folder.
 
-The following images and video link demonstrate the application's appearance and functionality:
-
-![Screenshot](./assets/images/mockup-1.png)
-![Screenshot](./assets/images/mockup-2.png)
-![Screenshot](./assets/images/mockup-3.png)
+The following video link demonstrates the application's appearance and functionality:
 
 [Google Drive Video Link](https://drive.google.com/file/d/1qpTUiYksRpXVYo-bCM2HZbjJ04jndQUr/view)
 
