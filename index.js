@@ -341,7 +341,7 @@ For any questions, feel free to email me ([${data.projectEmail}](mailto:${data.p
 This project is available under the following license: ${data.projectLicense}. For more information on rights and limitations, please review the [LICENSE](./LICENSE) file.
     `;
 
-    fs.writeFile('README.md', markdown, (err) =>
+    fs.writeFile('./output/README.md', markdown, (err) =>
         err ? console.log(err) : console.log('README.md created.')
     );
 

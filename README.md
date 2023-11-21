@@ -1,5 +1,5 @@
 # r
-[![License Badge](https://img.shields.io/badge/license-BSD%203%20Clause%20Clear-green)](./LICENSE)
+[![License Badge](https://img.shields.io/badge/license-MIT-green)](./LICENSE)
 
 ## Description
     
@@ -27,10 +27,6 @@ The following images demonstrate the application's appearance and functionality:
 ![Screenshot](./assets/images/r)
 
 ## Credits
-
-r
-
-## Tests
 
 r
 
