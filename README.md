@@ -36,7 +36,6 @@ The following images and video link demonstrate the application's appearance and
 ![Screenshot](./assets/images/mockup-2.png)
 ![Screenshot](./assets/images/mockup-3.png)
 
-[MP4 Video Link](./Demo.mp4)
 [Google Drive Video Link](https://drive.google.com/file/d/1qpTUiYksRpXVYo-bCM2HZbjJ04jndQUr/view)
 
 Please note that VSCode would take minutes to create the corresponding files, and so minimizing and reopening the application speeds that up for some reason.
